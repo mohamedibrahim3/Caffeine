@@ -36,6 +36,7 @@ fun CaffeineButton(
         shape = RoundedCornerShape(100.dp),
         contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),
         colors = ButtonDefaults.buttonColors().copy(containerColor = darkGray),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 7.dp),
         onClick = onClick
     ) {
         Row(
