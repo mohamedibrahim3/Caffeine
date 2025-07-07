@@ -14,10 +14,10 @@ import androidx.compose.ui.unit.dp
 fun BaseScreen(
     modifier: Modifier = Modifier,
     headerContent: @Composable () -> Unit,
-    mainContent: @Composable ColumnScope.() -> Unit,
     actionButtonText: String,
     actionButtonIconResId: Int,
     onActionButtonClick: () -> Unit,
+    mainContent: @Composable ColumnScope.() -> Unit
 ) {
     Column(
         modifier = modifier,
