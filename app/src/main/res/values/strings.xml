@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Caffeine</string>
+    <string name="bring_my_coffee">bring my coffee</string>
+    <string name="cup_of_coffee">cup of coffee</string>
 </resources>
