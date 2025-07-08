@@ -5,7 +5,7 @@ enum class Destination(
 ) {
     START("start"),
     COFFEE_TYPE("coffee type"),
-    CUP_SIZE("cup size"),
+    COFFEE_SIZE("Coffee size"),
     ORDER("order"),
     SNACK_TYPE("snack type"),
 }

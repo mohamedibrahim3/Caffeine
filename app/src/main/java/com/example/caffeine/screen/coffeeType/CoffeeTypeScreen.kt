@@ -8,9 +8,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -22,15 +26,20 @@ import com.example.caffeine.component.HeaderSection
 
 @Composable
 fun CoffeeTypeScreen(
-    navigateToCupSizeScreen: () -> Unit = {}
+    navigateToCupSizeScreen: (String) -> Unit = {}
 ) {
     CoffeeTypeContent(navigateToCupSizeScreen)
 }
 
 @Composable
 fun CoffeeTypeContent(
-    navigateToCupSizeScreen: () -> Unit
+    navigateToCupSizeScreen: (String) -> Unit
 ) {
+    val pagerState = rememberPagerState(1) { CoffeeType.entries.size }
+    val selectedCoffeeType by remember {
+        derivedStateOf { CoffeeType.entries[pagerState.currentPage] }
+    }
+
     BaseScreen(
         modifier = Modifier
             .statusBarsPadding()
@@ -39,7 +48,7 @@ fun CoffeeTypeContent(
             .verticalScroll(rememberScrollState()),
         actionButtonText = stringResource(R.string.continue_text),
         actionButtonIconResId = R.drawable.right_arrow,
-        onActionButtonClick = navigateToCupSizeScreen,
+        onActionButtonClick = { navigateToCupSizeScreen(selectedCoffeeType.name.lowercase()) },
         headerContent = {
             HeaderSection(
                 modifier = Modifier
@@ -56,7 +65,10 @@ fun CoffeeTypeContent(
             verticalArrangement = Arrangement.spacedBy(56.dp)
         ) {
             MorningGreeting(modifier = Modifier.padding(horizontal = 16.dp))
-            CoffeeTypePager(modifier = Modifier.height(298.dp))
+            CoffeeTypePager(
+                modifier = Modifier.height(298.dp),
+                pagerState = pagerState
+            )
         }
     }
 }

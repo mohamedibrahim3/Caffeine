@@ -32,7 +32,7 @@ fun MorningGreeting(modifier: Modifier = Modifier) {
             )
         )
         Text(
-            text = "Hamsa ☀",
+            text = "Mohamed ☀",
             style = TextStyle(
                 color = gray,
                 fontSize = 36.sp,
