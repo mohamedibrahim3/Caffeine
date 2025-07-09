@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.caffeine.screen.coffeeReady.CoffeeReadyScreen
 import com.example.caffeine.screen.coffeeSize.CoffeeSizeScreen
 import com.example.caffeine.screen.coffeeType.CoffeeTypeScreen
 import com.example.caffeine.screen.home.HomeScreen
@@ -38,9 +39,17 @@ fun AppNavHost(
             arguments = listOf(navArgument("coffeeType") { type = NavType.StringType })
         ) { backStackEntry ->
             val coffeeType = backStackEntry.arguments?.getString("coffeeType") ?: ""
-            CoffeeSizeScreen(coffeeType = coffeeType) {
-                navController.popBackStack()
-            }
+            CoffeeSizeScreen(
+                coffeeType = coffeeType,
+                onBackClick = { navController.popBackStack() },
+                navigateToReadyScreen = navController::navigateToReadyScreen
+            )
+        }
+        composable(Destination.READY.route) {
+            CoffeeReadyScreen(
+                onBackClick = { navController.popBackStack() },
+                navigateToSnackScreen = { navController.navigateToSnackScreen()},
+            )
         }
         composable(Destination.ORDER.route) {
             // Order screen implementation
@@ -54,3 +63,5 @@ fun AppNavHost(
 fun NavHostController.navigateToCoffeeTypeScreen() = navigate(Destination.COFFEE_TYPE.route)
 fun NavHostController.navigateToCoffeeSizeScreen(coffeeType: String) =
     navigate("${Destination.COFFEE_SIZE.route}/$coffeeType")
+fun NavHostController.navigateToReadyScreen() = navigate(Destination.READY.route)
+fun NavHostController.navigateToSnackScreen() = navigate(Destination.SNACK_TYPE.route)
