@@ -45,7 +45,7 @@ fun CupAnimation(
         )
     }
     LaunchedEffect(Unit) {
-        cupCoverOffsetY.animateTo((-cupImageSize.height * .03).dp)
+        cupCoverOffsetY.animateTo((-cupImageSize.height * .025).dp)
         cupImageOffsetY.animateTo(0.dp)
     }
 
