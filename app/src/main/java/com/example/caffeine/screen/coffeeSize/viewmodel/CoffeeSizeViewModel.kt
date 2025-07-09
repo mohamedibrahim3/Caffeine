@@ -33,7 +33,7 @@ class CoffeeSizeViewModel : ViewModel(), CoffeeSizeInteraction {
     override fun onPrepareCoffee() {
         viewModelScope.launch(Dispatchers.IO) {
             _state.update { it.copy(isCoffeePrepared = true) }
-            delay(5000)
+            delay(3000)
             _state.update { it.copy(isCoffeeReady = true) }
         }
     }

@@ -56,6 +56,7 @@ fun CoffeeReadyScreen(
     ) {
         Icon(
             modifier = Modifier
+                .padding(start = 13.dp, top = 14.dp)
                 .background(whisperGray, shape = CircleShape)
                 .padding(15.dp)
                 .size(24.dp)
