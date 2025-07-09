@@ -66,9 +66,9 @@ fun CoffeeReadyScreen(
             tint = darkGray.copy(.87f),
             contentDescription = null
         )
+        Spacer(modifier = Modifier.height(18.dp))
         Box(
             modifier = Modifier
-                .padding(bottom = 24.dp)
                 .size(56.dp)
                 .background(brown, CircleShape),
             contentAlignment = Alignment.Center
@@ -81,10 +81,8 @@ fun CoffeeReadyScreen(
                 contentDescription = null
             )
         }
+        Spacer(modifier = Modifier.height(24.dp))
         Text(
-            modifier = Modifier
-                .padding(horizontal = 70.dp)
-                .padding(bottom = 27.dp),
             text = stringResource(R.string.your_coffee_is_ready_enjoy),
             style = TextStyle(
                 color = darkGray.copy(.87f),
@@ -95,7 +93,8 @@ fun CoffeeReadyScreen(
                 textAlign = TextAlign.Center
             )
         )
-        CupAnimation(modifier = Modifier.padding(bottom = 27.dp))
+        Spacer(modifier = Modifier.height(37.dp))
+        CupAnimation()
         Spacer(modifier = Modifier.height(27.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,

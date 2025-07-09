@@ -9,5 +9,5 @@
     <string name="ml">%1$d ML</string>
     <string name="almost_done">Almost Done</string>
     <string name="your_coffee_will_be_finish_in">Your coffee will be finish in</string>
-    <string name="your_coffee_is_ready_enjoy">Your coffee is ready, Enjoy</string>
+    <string name="your_coffee_is_ready_enjoy">Your coffee is ready,\n Enjoy</string>
 </resources>
