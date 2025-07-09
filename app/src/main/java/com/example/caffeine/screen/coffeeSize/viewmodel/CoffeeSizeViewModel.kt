@@ -7,6 +7,7 @@ import com.example.caffeine.screen.coffeeSize.model.CoffeeAmount
 import com.example.caffeine.screen.coffeeSize.model.CoffeeSize
 import com.example.caffeine.screen.coffeeSize.state.CoffeeSizeState
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -32,6 +33,8 @@ class CoffeeSizeViewModel : ViewModel(), CoffeeSizeInteraction {
     override fun onPrepareCoffee() {
         viewModelScope.launch(Dispatchers.IO) {
             _state.update { it.copy(isCoffeePrepared = true) }
+            delay(5000)
+            _state.update { it.copy(isCoffeeReady = true) }
         }
     }
 }

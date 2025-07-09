@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,7 +42,11 @@ fun CoffeeSizeContent(
     interaction: CoffeeSizeInteraction,
     coffeeType: String,
     onBackClick: () -> Unit,
+    navigateToReadyScreen: () -> Unit
 ) {
+    LaunchedEffect(state.isCoffeeReady) {
+        if (state.isCoffeeReady) navigateToReadyScreen()
+    }
     val offsetX = LocalWindowInfo.current.containerSize.width.dp
     val animatedOffsetX =
         animateDpAsState(
@@ -118,7 +123,8 @@ fun Preview() {
                 override fun onPrepareCoffee() {}
             },
             coffeeType = "LATTE",
-            onBackClick = {}
+            onBackClick = {},
+            navigateToReadyScreen = {}
         )
     }
 }

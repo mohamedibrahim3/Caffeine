@@ -10,8 +10,9 @@ import org.koin.androidx.compose.koinViewModel
 fun CoffeeSizeScreen(
     viewModel: CoffeeSizeViewModel = koinViewModel(),
     coffeeType: String,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    navigateToReadyScreen: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
-    CoffeeSizeContent(state, viewModel, coffeeType, onBackClick)
+    CoffeeSizeContent(state, viewModel, coffeeType, onBackClick, navigateToReadyScreen)
 }
